@@ -4,9 +4,16 @@
   # root "articles#index"
 
   Rails.application.routes.draw do
+    get 'page/buy'
     get 'page/index'
+
     namespace 'api' do
     resources :houses     #this api has all the CRUD operation 
+    # root 'api#houses'
+
+
+   
+   
     
       end
     end
