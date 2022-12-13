@@ -33,66 +33,22 @@ module Api
                 end
 
             
-        
-                #update/put 1
-
-        # def house_params
-        #     params.permit(:city, :state, :zipcode, :address, :price, :beds, :bath, :image, :dimension)
-        # end   
-        
-        # def edit
-        #     house = House.find(params[:id])
-        #     if house.update_attributes(house_params)
-        #         render json:{status: 'SUCCESS', message: 'Updated', data: house}, status: :ok
-        #     else 
-        #         render json:{status: 'ERROR', message: 'Not updated', data: house.errors},status: :unprocessable_entity
-        #     end    
-        # end     
-
-
-
-        # def update 
-        #     @house = House.find(params[:id])
-        # if @house.update_attribute(house_params)
-        #     render json: {status: 'SUCCESS', message: 'Updated', data: @house},status: :ok
-        # else
-        #     render json:{status: 'ERROR', message: 'Not updated', data: @house.errors},status: :unprocessable_entity
-        #   end
-        # end  
-        
-
-
-        # def update 
-        #     @house = House.find(params[:id])
-        #     @house.update_attributes(@house_params)
-        #     render json: @house
-        # end          
+         
 
 
         def edit
+            @house = House.find(params[:id])
         end
       
         def update
             @house = House.find(params[:id])
-          if @house.update(@house_params)
-            redirect_to houses_path, notice: "successfully updated."
-          else
-            render :edit
+            @house.update(city: params[:city], state: params[:state], zipcode: params[:zipcode], address: params[:address], price: params[:price], beds: params[:beds], bath: params[:bath], image: params[:image], dimension: params[:dimension])
+            render json:{status: 'SUCCESS', message: 'Save houses', data: @house}, status: :ok  
           end
-        end
-            
-
-        
-        # def update
-        #     house = House.find(params[:id])
-        #     house.update
-        #     render json: {status: 'SUCCESS', message: 'Deleted house', data: house}, status: :ok
-        # end    
-
         
 
 
-
+          
 
         def destroy
             house = House.find(params[:id])
